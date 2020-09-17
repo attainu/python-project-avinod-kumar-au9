@@ -59,5 +59,47 @@ Slot No.  Registration No Color
 
 ### NOTE: Any commands which are not mentioned above will throw an error: PLease enter a valid command
 
+## Modules - OOPS Approach
+### There is one class defined:
+It is the main class, It has following methods:
+* creating_parking_slots(input) : Creates a parking lot with given input. It throws an error Minimum one slot is required to create parking slot if zero or negative number (n <= 0) is provided as an input.
+
+* parking_vehicle_at_slots(input) : Allocates nearest slot from entry gate to the car. It can throw following errors:
+
+    * Parking lot is not created, please create it : When parking lot is not initialized.
+
+    * Sorry, parking lot is full : When parking lot has reached its maximum capacity.
+
+
+
+* Leaving_vehicle_from_parking_lot(input) : Removes car in given slot in parking lot. It throws following errors:
+
+    * Slot number <SLOT NUMBER> is not found when slot number is absent.
+
+    * Slot number <SLOT NUMBER> is already free when slot number is not occupied.
+
+* getParkingStatus() : Returns the status of  slot number, registration number and color. It throws following error:
+    * Sorry, parking lot is empty if parking lot is empty.
+
+* get_registration_numbers_for_cars_with_colour(input) : Returns a comma separated string containing registration numbers of cars with same color e.g. KA-01-HH-1234, KA-01-HH-9999, KA-01-P-333 
+
+* get_slot_numbers_for_cars_with_colour(input) : Returns a comma separated string containing slot numbers of car with same color e.g. 3, 5, 6
+
+* get_slot_number_for_registration_number(input) : Finds slot number of car for given registration number eg. 3 . It returns Not found when car is not present
+
+* show_line(input) : If any condition satifies, the above one of the method will run
+
+## Assumptions
+If create_parking_lot command will be executed more than once, it will overwrite/remove the existing/previous information, and an empty parking lot will be created
+
+#
+#           Thank You
+
+
+
+
+
+
+
 
 
