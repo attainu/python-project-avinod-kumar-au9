@@ -10,18 +10,21 @@ class vehicle_Parking:
 
     def creating_parking_slots(self,create_parking_lot):
         
+        if create_parking_lot > 0:
+            for i in range(1,(create_parking_lot)+1):
+                if i not in dicti:
+                    dicti['slot_'+str(i)]="a"
 
-        for i in range(1,(create_parking_lot)+1):
-            if i not in dicti:
-                dicti['slot_'+str(i)]="a"
+            # print(dicti)
+            print("Created a parking lot with",create_parking_lot,"slots")
 
-        # print(dicti)
-        print("Created a parking lot with",create_parking_lot,"slots")
+        if create_parking_lot <= 0:
+            print("Minimum one slot is required to create parking slot")
 
     
     def parking_vehicle_at_slots(self,vehicle_for_parking):
         checking_parking_lot_is_full=0
-        
+
         for i in range(1,(create_parking_lot)+1):
             checking_parking_lot_is_full+=1
             
@@ -51,7 +54,7 @@ class vehicle_Parking:
 
         
     def Leaving_vehicle_from_parking_lot(self,Leave,create_parking_lot):
-
+        
         if int(Leave) > create_parking_lot:
             print("Slot number",Leave,"is not found")
         if int(Leave) <= create_parking_lot:
@@ -63,12 +66,25 @@ class vehicle_Parking:
                 print("Slot number",Leave,"is free")
 
 
-    def getParkingStatus(self):
-        print("This data as on:",current_date_time.strftime('%d-%m-%Y'),current_date_time.strftime("%H:%M"))
-        print("Slot No. || Registration No || Colour")
+    def getParkingStatus(self,create_parking_lot):
+        checking_parking_free_count=0
         for keys,values in dicti.items():
-            if values != "a":
-                print(keys[5:],values[0],values[1])
+            
+            if values == "a":
+                checking_parking_free_count+=1
+
+        
+        if  checking_parking_free_count==create_parking_lot:
+            print("Sorry, parking lot is empty")
+
+        else:
+            print("--- Below parking status as on:",current_date_time.strftime('%d-%m-%Y'),current_date_time.strftime("%H:%M"),"---")
+            print("Slot No.  Registration No   Colour")
+            for keys,values in dicti.items():
+                if values != "a":
+                    print(keys[5:]," "," "," "," ",values[0]," "," ",values[1])
+
+        
             
 
     def get_registration_numbers_for_cars_with_colour(self,colour):
@@ -98,13 +114,14 @@ class vehicle_Parking:
     
 
     def show_line(self,user_input):
-        user_input=user_input.split()
+        
         
         
         if "create_parking_lot" in user_input:
             
             global create_parking_lot
             create_parking_lot=int(user_input[-1])
+            
             parking.creating_parking_slots(create_parking_lot)
         
         
@@ -112,6 +129,7 @@ class vehicle_Parking:
             
             vehicle_for_parking= user_input[1]+" "+user_input[2]
             vehicle_for_parking=vehicle_for_parking.split()
+            
             parking.parking_vehicle_at_slots(vehicle_for_parking)
 
 
@@ -122,7 +140,8 @@ class vehicle_Parking:
 
         
         if "status" in user_input:
-            parking.getParkingStatus()
+            parking.getParkingStatus(create_parking_lot)
+            
 
         
         if "registration_numbers_for_cars_with_colour" in user_input:
@@ -140,6 +159,7 @@ class vehicle_Parking:
             parking.get_slot_number_for_registration_number(registration_number)
             print(parking.get_slot_number_for_registration_number(registration_number))
 
+        
 
 def main():
     
@@ -166,6 +186,7 @@ def main():
             break
         if "interactive" not in user_input or "file" not in user_input:
             print("Human error!, Choose a right choice")
+            print("\n")
     
     print("\n")
     if "interactive" in user_input:
@@ -173,12 +194,76 @@ def main():
         while True:
             print("----------------------------")
             user_input=input("What can i do for you ?: ")
-            if user_input=="exit":
+            user_input=user_input.split()
+            if "".join(user_input)=="exit":
                 print("\n")
                 print("Thank you for mingling with Me!")
                 print("\n")
                 break
+
+            if "create_parking_lot" not in user_input:
+                if "park" not in user_input:
+                    if "leave" not in user_input:
+                        
+                        if "status" not in user_input:
+                            if "registration_numbers_for_cars_with_colour" not in user_input:
+                                if "slot_numbers_for_cars_with_colour" not in user_input:
+                                    if "slot_number_for_registration_number" not in user_input:
+                                        print("PLease enter a valid command")
+                                        continue  
+            
+            
+            if "create_parking_lot" in user_input:
+                if len(user_input) < 2 or len(user_input) > 2:
+                    print("PLease enter a valid command")
+                    continue
+            
+            if "park" in user_input:
+                if len(dicti)==0 :
+                    print("Parking lot is not created, please create it")
+                    continue
+                if len(user_input) < 3 or len(user_input) > 3:
+                    print("PLease enter a valid command")
+                    continue 
+            if "leave" in user_input:
+                if len(dicti)==0 :
+                    print("Parking lot is not created, please create it")
+                    continue
+                if len(user_input) < 2 or len(user_input) > 2:
+                    print("PLease enter a valid command")
+                    continue
+            if "status" in user_input:
+                if len(dicti)==0 :
+                    print("Parking lot is not created, please create it")
+                    continue
+                if len(user_input) > 1:
+                    print("PLease enter a valid command")
+                    continue
+            if "registration_numbers_for_cars_with_colour" in user_input:
+                if len(dicti)==0 :
+                    print("Parking lot is not created, please create it")
+                    continue
+                if len(user_input) < 2 or len(user_input) > 2:
+                    print("PLease enter a valid command")
+                    continue
+            if "slot_numbers_for_cars_with_colour" in user_input:
+                if len(dicti)==0 :
+                    print("Parking lot is not created, please create it")
+                    continue
+                if len(user_input) < 2 or len(user_input) > 2:
+                    print("PLease enter a valid command")
+                    continue
+            if "slot_number_for_registration_number" in user_input:
+                if len(dicti)==0 :
+                    print("Parking lot is not created, please create it")
+                    continue
+                if len(user_input) < 2 or len(user_input) > 2:
+                    print("PLease enter a valid command")
+                    continue
+            
+                                      
             parking.show_line(user_input)
+            
             
 
     if "file" in user_input:
@@ -186,6 +271,69 @@ def main():
         with open("D:\Vinod\practise/1.txt","r") as f:
             for line in f:
                 user_input=line
+                user_input=user_input.split()
+                if "create_parking_lot" not in user_input:
+                    if "park" not in user_input:
+                        if "leave" not in user_input:
+                            
+                            if "status" not in user_input:
+                                if "registration_numbers_for_cars_with_colour" not in user_input:
+                                    if "slot_numbers_for_cars_with_colour" not in user_input:
+                                        if "slot_number_for_registration_number" not in user_input:
+                                            print("PLease enter a valid command")
+                                            continue  
+                
+                
+                
+                if "create_parking_lot" in user_input:
+                    if len(user_input) < 2 or len(user_input) > 2:
+                        print("PLease enter a valid command")
+                        continue
+                
+                if "park" in user_input:
+                    if len(dicti)==0 :
+                        print("Parking lot is not created, please create it")
+                        continue
+                    if len(user_input) < 3 or len(user_input) > 3:
+                        print("PLease enter a valid command")
+                        continue 
+                if "leave" in user_input:
+                    if len(dicti)==0 :
+                        print("Parking lot is not created, please create it")
+                        continue
+                    if len(user_input) < 2 or len(user_input) > 2:
+                        print("PLease enter a valid command")
+                        continue
+                if "status" in user_input:
+                    if len(dicti)==0 :
+                        print("Parking lot is not created, please create it")
+                        continue
+                    if len(user_input) > 1:
+                        print("PLease enter a valid command")
+                        continue
+                if "registration_numbers_for_cars_with_colour" in user_input:
+                    if len(dicti)==0 :
+                        print("Parking lot is not created, please create it")
+                        continue
+                    if len(user_input) < 2 or len(user_input) > 2:
+                        print("PLease enter a valid command")
+                        continue
+                if "slot_numbers_for_cars_with_colour" in user_input:
+                    if len(dicti)==0 :
+                        print("Parking lot is not created, please create it")
+                        continue
+                    if len(user_input) < 2 or len(user_input) > 2:
+                        print("PLease enter a valid command")
+                        continue
+                if "slot_number_for_registration_number" in user_input:
+                    if len(dicti)==0 :
+                        print("Parking lot is not created, please create it")
+                        continue
+                    if len(user_input) < 2 or len(user_input) > 2:
+                        print("PLease enter a valid command")
+                        continue
+
+
                 parking.show_line(user_input)
             print("\n")
             print("Thank you for mingling with Me!")
