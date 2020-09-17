@@ -159,7 +159,32 @@ class vehicle_Parking:
             parking.get_slot_number_for_registration_number(registration_number)
             print(parking.get_slot_number_for_registration_number(registration_number))
 
-        
+    def dracula(self):
+        print(" \n      usage of Commands          ----commands Description")
+        print("\n")
+        print("\ncreate_parking_lot < NUMBER OF SLOTS REQUIRED >      ---For creating parking slots Ex: create_parking_lot 6")
+
+        print("\npark < REGISTRATION NUMBER > < COLOR >      ---For parking your car Ex: park KA-01-HH-1234 White ")
+
+        print("\nleave < SLOT NUMBER >      ---For leaving car from the slot Ex: leave 4")
+
+        print("\nstatus      ---For checking the status of the parking lot")
+
+        print("\nregistration_numbers_for_cars_with_colour < COLOR >      ---For getting registration numbers with colour Ex: registration_numbers_for_cars_with_colour White")
+
+
+        print("\nslot_numbers_for_cars_with_colour < COLOR >      ---For getting slot numbers with colour Ex: slot_numbers_for_cars_with_colour White")
+
+        print("\nslot_number_for_registration_number < REGISTRATION NUMBER >      ---For getting slot number with registration number Ex: slot_number_for_registration_number MH-04-AY-1111")
+
+
+        print("\nexit      ---For to quit the terminal")
+        print("\n")
+
+        print("***Note: Any commands which are not mentioned above will throw an error: PLease enter a valid command")
+
+        print("\n")
+  
 
 def main():
     
@@ -175,16 +200,19 @@ def main():
     print("\n")
     
     while True:
-        user_input=input("Choose your choice - Type 1 for interactive, Type 2 for file: ").lower()
+        user_input=input("Choose your choice - Type 1 for interactive, Type 2 for file, Type -help for help: ").lower()
         
         if "1" in user_input:
             break
         if "2" in user_input:
             break
+        if "-help" in user_input:
+            parking.dracula()
+            break
         if "exit" in user_input:
             print("Thank you for mingling with Me!")
             break
-        if "1" not in user_input or "2" not in user_input:
+        if "1" not in user_input or "2" not in user_input or "-help" not in user_input:
             print("Human error!, Choose a right choice")
             print("\n")
     
@@ -268,7 +296,7 @@ def main():
 
     if "2" in user_input:
         while True:
-            prompt= input("Enter your file path (Type exit for closing the session): ")
+            prompt= input("Enter your file path (Type exit to quit the terminal): ")
             lowercase_prompt= prompt.lower()
             try:
                 with open(prompt,"r") as f:

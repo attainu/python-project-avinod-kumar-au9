@@ -1,6 +1,6 @@
-# Parking Lot Problem
+# Parking Lot Project
 
-## About Problem
+## About Project
 
 #### To design a parking lot system with ability to find:
 * Registration numbers of all cars of a particular colour.
@@ -26,11 +26,11 @@ Run the code and choose your choice in terminal- interactive or file
 
 #### For Interactive Mode
 
-Type interactive
+Type 1
 
 #### For File Mode
-Type file  
-And type your path of the file
+Type 2          
+And type your file path 
 
 ## List of User Commands
 Users can interact with the Parking Lot system via a following simple set of commands which produce a specific output:
@@ -92,8 +92,7 @@ It is the main class, It has following methods:
 ## Assumptions
 If create_parking_lot command will be executed more than once, it will overwrite/remove the existing/previous information, and an empty parking lot will be created
 
-#
-#           Thank You
+
 
 
 
