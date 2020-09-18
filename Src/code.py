@@ -113,9 +113,7 @@ class vehicle_Parking:
             return ("Not found")
     
 
-    def show_line(self,user_input):
-        
-        
+    def checking_conditions(self,user_input):
         
         if "create_parking_lot" in user_input:
             
@@ -200,7 +198,7 @@ def main():
     print("\n")
     
     while True:
-        user_input=input("Choose your choice - Type 1 for interactive, Type 2 for file, Type -help for help, Type exit for to stop execution: ").lower()
+        user_input=input("Choose your choice - \nType 1 for interactive \nType 2 for file \nType -help for help \nType exit to escape:\n ").lower()
         
         if "1" in user_input:
             break
@@ -221,7 +219,8 @@ def main():
         
         while True:
             print("----------------------------")
-            user_input=input("What can i do for you ? (Type -help for help): ")
+            user_input=input("What can i do for you ? (Type -help for help):\n ")
+            
             user_input=user_input.split()
             if "".join(user_input)=="-help" :
                 parking.help()
@@ -282,13 +281,13 @@ def main():
                     continue
             
                                       
-            parking.show_line(user_input)
+            parking.checking_conditions(user_input)
             
             
 
     if "2" in user_input:
         while True:
-            prompt= input("Enter your file path (Type exit to quit the terminal): ")
+            prompt= input("Enter your file path (Type exit to escape):\n ")
             lowercase_prompt= prompt.lower()
             try:
                 with open(prompt,"r") as f:
@@ -345,7 +344,7 @@ def main():
                                 continue
 
 
-                        parking.show_line(user_input)
+                        parking.checking_conditions(user_input)
                 print("\n")
                 print("Thank you for mingling with Me!")
                 print("\n")  
