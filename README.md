@@ -1,4 +1,8 @@
 # Parking Lot Project
+## Introduction:
+Parking lot is a cleared area that is intended for parking vehicles and the
+practise of temporarily leaving a vehicle into a certain location.
+
 
 ## About Project
 
@@ -93,6 +97,18 @@ It is the main class, It has following methods:
 
 ## Assumptions
 If create_parking_lot command will be executed more than once, it will overwrite/remove the existing/previous information, and an empty parking lot will be created
+
+
+### Python Packages & Libraries Used
+* time
+* datetime
+
+### Technologies Used
+* Python 3.8
+
+## Future Scope
+* Build a Gui for this project
+* Include various floors of parking lot
 
 
 
