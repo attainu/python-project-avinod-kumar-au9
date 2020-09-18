@@ -200,7 +200,7 @@ def main():
     print("\n")
     
     while True:
-        user_input=input("Choose your choice - Type 1 for interactive, Type 2 for file, Type -help for help, Type exit for closing terminal: ").lower()
+        user_input=input("Choose your choice - Type 1 for interactive, Type 2 for file, Type -help for help, Type exit for to stop execution: ").lower()
         
         if "1" in user_input:
             break
