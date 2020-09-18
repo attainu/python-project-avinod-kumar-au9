@@ -159,7 +159,7 @@ class vehicle_Parking:
             parking.get_slot_number_for_registration_number(registration_number)
             print(parking.get_slot_number_for_registration_number(registration_number))
 
-    def dracula(self):
+    def help(self):
         print(" \n      usage of Commands          ----commands Description")
         print("\n")
         print("\ncreate_parking_lot < NUMBER OF SLOTS REQUIRED >      ---For creating parking slots Ex: create_parking_lot 6")
@@ -200,15 +200,15 @@ def main():
     print("\n")
     
     while True:
-        user_input=input("Choose your choice - Type 1 for interactive, Type 2 for file, Type -help for help: ").lower()
+        user_input=input("Choose your choice - Type 1 for interactive, Type 2 for file, Type -help for help, Type exit for closing terminal: ").lower()
         
         if "1" in user_input:
             break
         if "2" in user_input:
             break
         if "-help" in user_input:
-            parking.dracula()
-            break
+            parking.help()
+            continue
         if "exit" in user_input:
             print("Thank you for mingling with Me!")
             break
@@ -221,25 +221,29 @@ def main():
         
         while True:
             print("----------------------------")
-            user_input=input("What can i do for you ?: ")
+            user_input=input("What can i do for you ? (Type -help for help): ")
             user_input=user_input.split()
+            if "".join(user_input)=="-help" :
+                parking.help()
+                continue
+
             if "".join(user_input)=="exit":
                 print("\n")
                 print("Thank you for mingling with Me!")
                 print("\n")
                 break
 
-            if "create_parking_lot" not in user_input:
-                if "park" not in user_input:
-                    if "leave" not in user_input:
-                        
-                        if "status" not in user_input:
-                            if "registration_numbers_for_cars_with_colour" not in user_input:
-                                if "slot_numbers_for_cars_with_colour" not in user_input:
-                                    if "slot_number_for_registration_number" not in user_input:
-                                        print("PLease enter a valid command")
-                                        continue  
-            
+            arr=["create_parking_lot","park","leave","status","registration_numbers_for_cars_with_colour","slot_numbers_for_cars_with_colour","slot_number_for_registration_number"]
+            if user_input[0] not in arr:
+                print("PLease enter a valid command")
+                continue
+
+            arr1=["park","status","leave","registration_numbers_for_cars_with_colour","slot_numbers_for_cars_with_colour","slot_number_for_registration_number"]
+            if user_input[0] in arr1:
+                if len(dicti)==0 :
+                    print("Parking lot is not created, please create it")
+                    continue
+
             
             if "create_parking_lot" in user_input:
                 if len(user_input) < 2 or len(user_input) > 2:
@@ -247,44 +251,32 @@ def main():
                     continue
             
             if "park" in user_input:
-                if len(dicti)==0 :
-                    print("Parking lot is not created, please create it")
-                    continue
+                
                 if len(user_input) < 3 or len(user_input) > 3:
                     print("PLease enter a valid command")
                     continue 
             if "leave" in user_input:
-                if len(dicti)==0 :
-                    print("Parking lot is not created, please create it")
-                    continue
+                
                 if len(user_input) < 2 or len(user_input) > 2:
                     print("PLease enter a valid command")
                     continue
             if "status" in user_input:
-                if len(dicti)==0 :
-                    print("Parking lot is not created, please create it")
-                    continue
+                
                 if len(user_input) > 1:
                     print("PLease enter a valid command")
                     continue
             if "registration_numbers_for_cars_with_colour" in user_input:
-                if len(dicti)==0 :
-                    print("Parking lot is not created, please create it")
-                    continue
+                
                 if len(user_input) < 2 or len(user_input) > 2:
                     print("PLease enter a valid command")
                     continue
             if "slot_numbers_for_cars_with_colour" in user_input:
-                if len(dicti)==0 :
-                    print("Parking lot is not created, please create it")
-                    continue
+                
                 if len(user_input) < 2 or len(user_input) > 2:
                     print("PLease enter a valid command")
                     continue
             if "slot_number_for_registration_number" in user_input:
-                if len(dicti)==0 :
-                    print("Parking lot is not created, please create it")
-                    continue
+                
                 if len(user_input) < 2 or len(user_input) > 2:
                     print("PLease enter a valid command")
                     continue
@@ -304,18 +296,17 @@ def main():
                     for line in f:
                         user_input=line
                         user_input=user_input.split()
-                        if "create_parking_lot" not in user_input:
-                            if "park" not in user_input:
-                                if "leave" not in user_input:
-                                    
-                                    if "status" not in user_input:
-                                        if "registration_numbers_for_cars_with_colour" not in user_input:
-                                            if "slot_numbers_for_cars_with_colour" not in user_input:
-                                                if "slot_number_for_registration_number" not in user_input:
-                                                    print("PLease enter a valid command")
-                                                    continue  
-                        
-                        
+                        arr=["create_parking_lot","park","leave","status","registration_numbers_for_cars_with_colour","slot_numbers_for_cars_with_colour","slot_number_for_registration_number"]
+                        if user_input[0] not in arr:
+                            print("PLease enter a valid command")
+                            continue
+
+                        arr1=["park","status","leave","registration_numbers_for_cars_with_colour","slot_numbers_for_cars_with_colour","slot_number_for_registration_number"]
+                        if user_input[0] in arr1:
+                            if len(dicti)==0 :
+                                print("Parking lot is not created, please create it")
+                                continue
+
                         
                         if "create_parking_lot" in user_input:
                             if len(user_input) < 2 or len(user_input) > 2:
@@ -323,44 +314,32 @@ def main():
                                 continue
                         
                         if "park" in user_input:
-                            if len(dicti)==0 :
-                                print("Parking lot is not created, please create it")
-                                continue
+                            
                             if len(user_input) < 3 or len(user_input) > 3:
                                 print("PLease enter a valid command")
                                 continue 
                         if "leave" in user_input:
-                            if len(dicti)==0 :
-                                print("Parking lot is not created, please create it")
-                                continue
+                            
                             if len(user_input) < 2 or len(user_input) > 2:
                                 print("PLease enter a valid command")
                                 continue
                         if "status" in user_input:
-                            if len(dicti)==0 :
-                                print("Parking lot is not created, please create it")
-                                continue
+                            
                             if len(user_input) > 1:
                                 print("PLease enter a valid command")
                                 continue
                         if "registration_numbers_for_cars_with_colour" in user_input:
-                            if len(dicti)==0 :
-                                print("Parking lot is not created, please create it")
-                                continue
+                            
                             if len(user_input) < 2 or len(user_input) > 2:
                                 print("PLease enter a valid command")
                                 continue
                         if "slot_numbers_for_cars_with_colour" in user_input:
-                            if len(dicti)==0 :
-                                print("Parking lot is not created, please create it")
-                                continue
+                            
                             if len(user_input) < 2 or len(user_input) > 2:
                                 print("PLease enter a valid command")
                                 continue
                         if "slot_number_for_registration_number" in user_input:
-                            if len(dicti)==0 :
-                                print("Parking lot is not created, please create it")
-                                continue
+                            
                             if len(user_input) < 2 or len(user_input) > 2:
                                 print("PLease enter a valid command")
                                 continue

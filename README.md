@@ -59,6 +59,8 @@ Slot No.  Registration No Color
 
 ### NOTE: Any commands which are not mentioned above will throw an error: PLease enter a valid command
 
+#### To view all the commands in terminal, please type  -help
+
 ## Modules - OOPS Approach
 ### There is one class defined:
 It is the main class, It has following methods:
