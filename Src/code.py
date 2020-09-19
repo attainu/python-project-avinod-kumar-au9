@@ -244,6 +244,7 @@ def main():
                     wrong_input_count=0
                     continue
                 continue
+            wrong_input_count=0
 
             arr1=["park","status","leave","registration_numbers_for_cars_with_colour","slot_numbers_for_cars_with_colour","slot_number_for_registration_number"]
             if user_input[0] in arr1:
