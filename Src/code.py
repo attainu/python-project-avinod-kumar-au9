@@ -216,7 +216,7 @@ def main():
     
     print("\n")
     if "1" in user_input:
-        
+        wrong_input_count=0
         while True:
             print("----------------------------")
             user_input=input("What can i do for you ? (Type -help for help):\n ")
@@ -224,6 +224,9 @@ def main():
             user_input=user_input.split()
             if "".join(user_input)=="-help" :
                 parking.help()
+                continue
+
+            if len(user_input)==0:
                 continue
 
             if "".join(user_input)=="exit":
@@ -234,7 +237,12 @@ def main():
 
             arr=["create_parking_lot","park","leave","status","registration_numbers_for_cars_with_colour","slot_numbers_for_cars_with_colour","slot_number_for_registration_number"]
             if user_input[0] not in arr:
+                wrong_input_count+=1
                 print("PLease enter a valid command")
+                if wrong_input_count>=5:
+                    parking.help()
+                    wrong_input_count=0
+                    continue
                 continue
 
             arr1=["park","status","leave","registration_numbers_for_cars_with_colour","slot_numbers_for_cars_with_colour","slot_number_for_registration_number"]
