@@ -62,6 +62,7 @@ Slot No.  Registration No Color
 * exit : exit will quit the terminal and end the code execution
 
 ### NOTE: Any commands which are not mentioned above will throw an error: PLease enter a valid command
+#### If a wrong input enters upto 5 times, system run help command automatically to make understand of commands
 
 #### To view all the commands in terminal, please type  -help
 
