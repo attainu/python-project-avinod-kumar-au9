@@ -1,6 +1,6 @@
 
 import time
-
+from tqdm import tqdm
 import datetime
 current_date_time= datetime.datetime.now()
 
@@ -192,9 +192,10 @@ def main():
     print("---- Welcome to the automated parking lot system ----")
     
     print("\n")
-    time.sleep(2)
+    time.sleep(0.5)
     print("System Initializing...")
-    time.sleep(1)
+    for i in tqdm(range(100)):
+        time.sleep(0.03)
     print("\n")
     
     while True:
